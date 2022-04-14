@@ -10,4 +10,4 @@ app.listen(process.env.PORT, () =>
   console.log(`Express Server Connected to port ${process.env.PORT}`)
 );
 
-createUserService({email:"sdasdsjjjjad",password:"Asdads1ad_a"});
+
