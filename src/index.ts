@@ -1,4 +1,4 @@
-import { createUserService } from './objects/users/services.ts/createUserService';
+import { createUserService } from './objects/users/services/CreateUser/createUserService';
 import dbConnection from "./config/mongoDbConfig";
 import dotenv from "dotenv";
 import app from "./app"
