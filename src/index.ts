@@ -1,3 +1,5 @@
-import express from 'express';
-const app = express();
-app.listen(3000,()=>console.log("server started"))
+import dbConnection from "./config/mongoDbConfig";
+import dotenv from "dotenv";
+
+dotenv.config();
+dbConnection(`${process.env.MONGO_URI}`);
