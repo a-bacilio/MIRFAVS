@@ -11,7 +11,7 @@ export const loginUserController = async (
         const userBody: loginUserType = req.body;
         if (Object.values(userBody).length === 0) throw new Error("There are missing parameters");
         const response: applicationMessageType = await loginUserService(userBody);
-        res.status(response.status || 200).json({ message: response.message });
+        res.status(response.status || 200).json({ token: response.data?.token });
     } catch (error: any) {
         res.status(500).json({ error: error.message })
     }
