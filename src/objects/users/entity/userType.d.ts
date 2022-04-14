@@ -1,17 +1,14 @@
-import { Types } from "mongoose";
-import { string } from "yup";
+import { Types } from 'mongoose';
+import { favType } from './../../favs/entity/favType.d';
 
 
-export interface createUser {
+
+export interface createUserBody {
     email: string;
     password: string;
     passwordConfirmation: string;
 }
 
-export type  createUserBody = Omit<createUser, "passwordConfirmation">;
+export type createUser = Omit<createUserBody, "passwordConfirmation">;
 
-export interface UserType extends createUserBody {
-  _id: string;
-  favs: []
-}
 
