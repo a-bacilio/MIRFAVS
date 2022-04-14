@@ -7,7 +7,7 @@ import { encryptPassword } from '../../../../utils/encription/passwordEncription
 export const createUserService = async (userData: createUserType): Promise<{message:string, status: number, error?:any}> => {
   try {
     const emailRegisteredUser = await UserModel.find({email:userData.email});
-    if(emailRegisteredUser) throw new Error("This email has already been registered");
+    if(Object.values(emailRegisteredUser).length>0) throw new Error("This email has already been registered");
     const encryptedPassword = await encryptPassword(userData.password)
     const newUser: userModelType = await UserModel.create({ ...userData, password: encryptedPassword })
     if(newUser) {

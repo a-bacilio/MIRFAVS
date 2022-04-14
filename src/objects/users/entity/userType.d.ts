@@ -8,5 +8,6 @@ export interface createUserBody {
 }
 
 export type createUserType = Omit<createUserBody, "passwordConfirmation">;
+export type loginUserType = Omit<createUserBody, "passwordConfirmation">;
 
 
