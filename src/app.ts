@@ -17,7 +17,7 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 
 app.use("/auth/local",userRouter);
 
-app.use("/fav",isAuthenticated, favListRouter)
+app.use("api/favs",isAuthenticated, favListRouter)
 
 /**app.post("/echo",echoController)*/
 
