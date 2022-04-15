@@ -1,7 +1,7 @@
 import { Types } from 'mongoose';
 import { UserModel } from '../../../users/entity/userModel';
 
-export const getFavListService = async ( userid: Types.ObjectId): Promise<any> => {
+export const getAllFavListService = async ( userid: Types.ObjectId): Promise<any> => {
     try {
         const User = await UserModel.findById(userid).populate([{path:"lists",populate: {
             path: 'favs',

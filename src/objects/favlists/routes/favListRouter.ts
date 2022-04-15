@@ -1,4 +1,4 @@
-import { getFavListController } from './../controllers/getFavListController';
+import { getAllFavListController } from '../controllers/getAllFavListController';
 import { createFavListController } from '../controllers/createFavListController';
 
 import { Router } from "express";
@@ -8,5 +8,5 @@ import { Router } from "express";
 export const favListRouter = Router();
 
 favListRouter.post("", createFavListController);
-favListRouter.get("", getFavListController);
+favListRouter.get("", getAllFavListController);
 
