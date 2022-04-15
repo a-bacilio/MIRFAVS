@@ -25,6 +25,9 @@ const UserModelSchema = new Schema<userModelType>(
   }
 );
 
-
+UserModelSchema.methods.toJSON = function UserReturn() {
+  const thisObject = this.toObject();
+  return {  ...thisObject, id:thisObject?._id };
+};
 
 export const UserModel = model<userModelType>("User", UserModelSchema);

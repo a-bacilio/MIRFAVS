@@ -19,6 +19,9 @@ const ListModelSchema = new Schema<listModelType>(
   }
 );
 
-
+ListModelSchema.methods.toJSON = function ListReturn() {
+  const thisObject = this.toObject();
+  return {  ...thisObject, id:thisObject?._id };
+};
 
 export const ListModel = model<listModelType>("List", ListModelSchema);
