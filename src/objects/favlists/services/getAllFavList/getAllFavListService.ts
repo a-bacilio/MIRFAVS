@@ -7,9 +7,8 @@ export const getAllFavListService = async ( userid: Types.ObjectId): Promise<any
             path: 'favs',
             model: 'Fav'
           }}])
-        return User;
+        return User?.lists;
     } catch (error:any) {
         throw new Error(error.message)
     }
-    return { message: "success", status: 201 }
 };
