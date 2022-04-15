@@ -6,5 +6,5 @@ import { Router } from "express";
 
 export const favListRouter = Router();
 
-favListRouter.post("/fav", createFavListController);
+favListRouter.post("", createFavListController);
 

@@ -5,7 +5,7 @@ import { applicationMessageType } from '../../../applicationMessages/types/appli
 export const addListToUser = async (listId: Types.ObjectId, userId: Types.ObjectId): Promise<applicationMessageType> => {
     try{
         const selectedUser:any = await UserModel.findById(userId);
-        if(!selectedUser) throw new Error("User not found");
+        if(!selectedUser) new Error("User not found");
         try{
             await selectedUser.lists.push(listId);
             selectedUser.save();
@@ -13,7 +13,7 @@ export const addListToUser = async (listId: Types.ObjectId, userId: Types.Object
             throw new Error("List couldnt be added to User")
         }
     }catch(error){
-        throw new Error("List not found")
+        throw new Error("User not found")
     }
     return {message:"successful addition"}
 };

@@ -18,8 +18,8 @@ export const createFavListService = async (ListData: createListWithFavsType, use
             })
         }
 
-    } catch (error) {
-        throw new Error("Error creating list")
+    } catch (error:any) {
+        throw new Error(error.message)
     }
     return { message: "success", status: 201 }
 };

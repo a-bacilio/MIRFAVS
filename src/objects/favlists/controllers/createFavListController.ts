@@ -11,7 +11,7 @@ export const createFavListController = async (
 ) => {
     try {
         const listBody: createListType = req.body.createListBody;
-        const userid: Types.ObjectId = req.body.userid;
+        const userid: Types.ObjectId = new Types.ObjectId(req.userId);
         if (Object.values(req.body).length === 0) throw new Error("There are missing parameters");
         if (Object.values(listBody).length === 0) throw new Error("There are missing parameters");
         const response: applicationMessageType = await createFavListService(listBody,userid);

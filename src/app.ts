@@ -1,3 +1,5 @@
+import { isAuthenticated } from './middlewares/authTokenValidation/isAuthenticated';
+import { echoController } from './utils/controller/echoController';
 import { favListRouter } from './objects/favlists/routes/favListRouter';
 import { userRouter } from './objects/users/routes/userRouter';
 import dotenv from "dotenv";
@@ -15,6 +17,8 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 
 app.use("/auth/local",userRouter);
 
-app.use("",favListRouter)
+app.use("/fav",isAuthenticated, favListRouter)
+
+/**app.post("/echo",echoController)*/
 
 export default app;
