@@ -1,5 +1,5 @@
 import { getOneFavListByIdService } from './../services/getOneFavListById/getOneFavListByIdService';
-import { validateListOwnershipService } from '../services/getOneFavListById/validateListOwnershipService';
+import { validateListOwnershipService } from '../utils/validateListOwnerShip/validateListOwnershipService';
 import { Types } from 'mongoose';
 
 import { Request, Response } from "express";
