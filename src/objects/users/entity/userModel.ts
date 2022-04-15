@@ -15,10 +15,10 @@ const UserModelSchema = new Schema<userModelType>(
     },
     lists: [
       {
-      type:Types.ObjectId,
-      ref: "List"
-    }
-  ]
+        type: Types.ObjectId,
+        ref: "List"
+      }
+    ]
   },
   {
     timestamps: true,

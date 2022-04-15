@@ -1,3 +1,4 @@
+import { favListRouter } from './objects/favlists/routes/favListRouter';
 import { userRouter } from './objects/users/routes/userRouter';
 import dotenv from "dotenv";
 import express, { Application, NextFunction, Request, Response } from "express";
@@ -13,5 +14,7 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 });
 
 app.use("/auth/local",userRouter);
+
+app.use("",favListRouter)
 
 export default app;

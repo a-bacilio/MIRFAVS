@@ -9,7 +9,7 @@ const ListModelSchema = new Schema<listModelType>(
     },
     favs: [
       {
-        type:Schema.Types.ObjectId,
+        type: Types.ObjectId,
         ref: "Fav"
       }
     ],
