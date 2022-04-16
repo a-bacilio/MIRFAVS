@@ -1,6 +1,4 @@
-export interface applicationMessageType {
+import { serviceMessageType } from './serviceMessageType';
+export interface applicationMessageType extends serviceMessageType {
     status?: number;
-    message?: string;
-    error?: string;
-    data?: any;
 }

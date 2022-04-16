@@ -4,20 +4,26 @@ import { NextFunction, Request, Response } from "express";
 export const isAuthenticated = (req: Request, res: Response, next: NextFunction) => {
   try {
     const { authorization } = req.headers;
-    if (!authorization)
-      return next(
-        new Error("No token found")
-      );
+    if (!authorization) {
+      res.status(500).json({ error: "No token provided" })
+      return;
+    }
     const token = authorization.replace("Bearer ", "");
     const { id } = validateToken(token);
-    if (!id) return next(new Error("Invalid Token"));
-
-    req.userId = id;
-
-    return next();
+    if (!id) {
+      res.status(500).json({ error: "Token Invalid" })
+      return;
+    } else {
+      req.userId = id;
+      return next();
+    }
   } catch (error: any) {
-    if (error.message === "jwt expired")
-      return next(new Error("Expired Token"));
-    return next({ error });
+    if (error.message === "jwt expired") {
+      res.status(500).json({ error: "expired token" })
+      return;
+    }else{
+      res.status(500).json({ error: `${JSON.stringify(error)}` })
+      return;
+    }
   }
 };

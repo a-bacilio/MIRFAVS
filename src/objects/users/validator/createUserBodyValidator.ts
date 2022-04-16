@@ -13,8 +13,8 @@ const createUserBodyValidator = yup.object({
     .required("A password is required"),
   passwordConfirmation: yup
     .string()
-    .required("La confirmación de contraseña es requerida")
-    .oneOf([yup.ref("password"), null], "La contraseña no coincide"),
+    .required("A password confirmation is required")
+    .oneOf([yup.ref("password"), null], "password doesnt match"),
 });
 
 export const createUserRequestBodyValidator = yup.object({

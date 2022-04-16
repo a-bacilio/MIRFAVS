@@ -1,8 +1,8 @@
+import { removeListFromUserService } from './../services/removeListFromUser/removeListFromUserService';
 import { validateListOwnershipService } from '../utils/validateListOwnerShip/validateListOwnershipService';
 import { Types } from 'mongoose';
 
 import { Request, Response } from "express";
-import { listModelType } from '../../lists/entity/listModelType';
 import { deleteOneFavListByIdService } from '../services/deleteOneFavListById/deleteOneFavListByIdService';
 
 export const deleteOneFavListByIdController = async (
@@ -16,8 +16,11 @@ export const deleteOneFavListByIdController = async (
         const userid: Types.ObjectId = new Types.ObjectId(req.userId);
         const ownership:boolean = await validateListOwnershipService(userid,listId)
         if(ownership){
-            const List:listModelType = await deleteOneFavListByIdService(listId)
-            res.status(200).json({message:"list deleted"});
+            const deleteFavList = await deleteOneFavListByIdService(listId)
+            const removeFavList = await removeListFromUserService(userid,listId)
+            if(!deleteFavList) res.status(500).json({error:"list couldnt be deleted"});
+            if(!removeFavList) res.status(500).json({error:"list couldnt be removed"});
+            if(removeFavList&&deleteFavList) res.status(200).json({message:"list deleted"});
         }else{
             throw new Error("This list doesnt belongs to the user");
         }

@@ -1,6 +1,6 @@
-import { applicationMessageType } from './../../../applicationMessages/types/applicationMessageTypes';
-import { loginUserType } from './../../entity/userType';
-import { loginUserService } from './loginUserService';
+import { applicationMessageType } from '../../applicationMessages/types/applicationMessageTypes';
+import { loginUserType } from '../entity/userType';
+import { loginUserService } from '../services/loginUser/loginUserService';
 import { NextFunction, Request, Response } from "express";
 
 export const loginUserController = async (

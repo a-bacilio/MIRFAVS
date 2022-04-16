@@ -9,10 +9,11 @@ export const deleteOneFavListByIdService = async (listId: Types.ObjectId): Promi
         if (List) {
             List.favs?.forEach(async fav => await deleteOneFavByIdService(fav));
             await deleteOneListByIdService(listId);
+            return true
         } else {
-            throw new Error("That list doesnt exist")
+            return false
         }
     } catch (error: any) {
-        throw new Error(error.message)
+        return false
     }
 };

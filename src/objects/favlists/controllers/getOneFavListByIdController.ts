@@ -17,7 +17,7 @@ export const getOneFavListByIdController = async (
         const ownership:boolean = await validateListOwnershipService(userid,listId)
         if(ownership){
             const List:listModelType = await getOneFavListByIdService(listId)
-            res.status(200).json({List});
+            res.status(200).json(List);
         }else{
             throw new Error("This list doesnt belongs to the user");
         }

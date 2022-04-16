@@ -22,10 +22,7 @@ const favModelSchema = new Schema<favModelType>(
     }
 );
 
-favModelSchema.methods.toObject = function favReturn() {
-    const thisObject = this.toJSON();
-    return { ...thisObject, id: thisObject?._id };
-};
+
 
 
 export const FavModel = model<favModelType>("Fav", favModelSchema);

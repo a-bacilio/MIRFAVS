@@ -10,11 +10,11 @@ export const addFavToListService = async (favId: Types.ObjectId, listId: Types.O
         try{
             selectedList.favs.push(favId);
             selectedList.save();
-        }catch(error){
+        }catch(error:any){
             throw new Error("Fav couldnt be added to List")
         }
-    }catch(error){
-        throw new Error("List not found")
+        return {message:"successfull addition to List"}
+    }catch(error:any){
+        return { error: "Error adding list "}
     }
-    return {message:"successfull addition to List"}
 };
